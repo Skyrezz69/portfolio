@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reza Syadewo | Portfolio</title>
+
+  <!-- GOOGLE FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#0f172a;
+      color:white;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    /* BACKGROUND GRID */
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left, rgba(56,189,248,0.14), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(168,85,247,0.12), transparent 30%);
+      z-index:-1;
+    }
+
+    img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    section{
+      padding:110px 0;
+    }
+
+    .container{
+      width:90%;
+      max-width:1150px;
+      margin:auto;
+    }
+
+    .glass{
+      background:rgba(17,24,39,0.65);
+      border:1px solid rgba(255,255,255,0.06);
+      backdrop-filter:blur(12px);
+      border-radius:28px;
+    }
+
+    /* NAVBAR */
+
+    header{
+      position:fixed;
+      width:100%;
+      top:0;
+      z-index:999;
+      background:rgba(15,23,42,0.75);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 0;
+    }
+
+    .logo{
+      font-size:1.3rem;
+      font-weight:700;
+      color:#38bdf8;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+    }
+
+    .nav-links a{
+      color:#cbd5e1;
+      transition:.3s;
+      font-size:.95rem;
+    }
+
+    .nav-links a:hover{
+      color:#38bdf8;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-content{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h3{
+      color:#38bdf8;
+      margin-bottom:12px;
+      font-weight:500;
+    }
+
+    .hero-text h1{
+      font-size:4.2rem;
+      line-height:1.1;
+      margin-bottom:22px;
+    }
+
+    .hero-text p{
+      color:#cbd5e1;
+      line-height:1.8;
+      margin-bottom:35px;
+      max-width:650px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:14px;
+      font-weight:600;
+      transition:.3s;
+      display:inline-block;
+    }
+
+    .btn-primary{
+      background:#38bdf8;
+      color:#0f172a;
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,0.15);
+      color:white;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+    }
+
+    /* PROFILE CARD */
+
+    .profile-card{
+      padding:35px;
+      text-align:center;
+    }
+
+    .profile-card img{
+      width:280px;
+      height:280px;
+      object-fit:cover;
+      border-radius:28px;
+      margin:auto;
+      margin-bottom:25px;
+      border:4px solid #38bdf8;
+      box-shadow:0 0 40px rgba(56,189,248,0.35);
+    }
+
+    .profile-card h2{
+      margin-bottom:10px;
+    }
+
+    .profile-card p{
+      color:#cbd5e1;
+      margin-bottom:10px;
+    }
+
+    /* SECTION TITLE */
+
+    .section-title{
+      text-align:center;
+      margin-bottom:70px;
+    }
+
+    .section-title h2{
+      font-size:2.7rem;
+      margin-bottom:12px;
+    }
+
+    .section-title p{
+      color:#94a3b8;
+    }
+
+    /* ABOUT */
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+
+    .about-card{
+      padding:35px;
+    }
+
+    .about-card h3{
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    .about-card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    /* SKILLS */
+
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+      gap:25px;
+    }
+
+    .tool-item{
+      padding:25px 18px;
+      text-align:center;
+      transition:.3s;
+    }
+
+    .tool-item:hover{
+      transform:translateY(-8px);
+      border-color:#38bdf8;
+      box-shadow:0 0 25px rgba(56,189,248,0.2);
+    }
+
+    .tool-item img{
+      width:58px;
+      height:58px;
+      object-fit:contain;
+      margin:auto;
+      margin-bottom:16px;
+    }
+
+    .tool-item span{
+      color:#e2e8f0;
+      font-size:.92rem;
+    }
+
+    /* PROJECTS */
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:28px;
+    }
+
+    .project-card{
+      overflow:hidden;
+      transition:.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .project-card img{
+      height:220px;
+      object-fit:cover;
+    }
+
+    .project-content{
+      padding:28px;
+    }
+
+    .project-content h3{
+      margin-bottom:15px;
+      color:#38bdf8;
+    }
+
+    .project-content p{
+      color:#cbd5e1;
+      line-height:1.7;
+      margin-bottom:20px;
+    }
+
+    .project-content a{
+      color:#38bdf8;
+      font-weight:600;
+    }
+
+    /* EDUCATION */
+
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:25px;
+    }
+
+    .timeline-card{
+      padding:35px;
+    }
+
+    .timeline-card h3{
+      color:#38bdf8;
+      margin-bottom:10px;
+    }
+
+    .timeline-card span{
+      color:#94a3b8;
+      font-size:.92rem;
+    }
+
+    .timeline-card p{
+      color:#cbd5e1;
+      margin-top:15px;
+      line-height:1.8;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      text-align:center;
+      padding:55px;
+    }
+
+    .contact-box h3{
+      font-size:2rem;
+      margin-bottom:20px;
+      color:#38bdf8;
+    }
+
+    .contact-box p{
+      color:#cbd5e1;
+      margin:14px 0;
+      font-size:1.05rem;
+    }
+
+    footer{
+      text-align:center;
+      padding:35px 0;
+      border-top:1px solid rgba(255,255,255,0.06);
+      color:#94a3b8;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero-content,
+      .about-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-text{
+        text-align:center;
+      }
+
+      .hero-text p{
+        margin:auto;
+        margin-bottom:30px;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .hero-text h1{
+        font-size:3rem;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .hero-text h1{
+        font-size:2.4rem;
+      }
+
+      .profile-card img{
+        width:220px;
+        height:220px;
+      }
+
+      .section-title h2{
+        font-size:2rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <header>
+
+    <div class="container">
+
+      <nav>
+
+        <div class="logo">Reza Syadewo</div>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <!-- TEXT -->
+
+        <div class="hero-text">
+
+          <h3>Hello, I'm</h3>
+
+          <h1>Reza Syadewo</h1>
+
+          <p>
+            Data Science enthusiast with experience in data analysis,
+            machine learning, ETL pipelines, and modern web technologies.
+            Passionate about building data-driven solutions and creating
+            impactful digital products through technology and analytics.
+          </p>
+
+          <div class="hero-buttons">
+
+            <a href="#projects" class="btn btn-primary">
+              View Projects
+            </a>
+
+            <a href="cv.pdf" class="btn btn-outline">
+              Download CV
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PROFILE -->
+
+        <div class="profile-card glass">
+
+          <img src="images/Profile/reza.png" alt="Reza Syadewo">
+
+          <h2>Reza Syadewo</h2>
+
+          <p>Data Scientist & Developer</p>
+
+          <p>📍 Bekasi, Indonesia</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>Professional Summary</p>
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-card glass">
+
+          <h3>Who Am I?</h3>
+
+          <p>
+            I am a versatile and adaptable professional with backgrounds
+            in education, hospitality, content creation, and data science.
+            Experienced in teaching, communication, customer service,
+            and analytical problem solving with strong technical skills
+            in Python, SQL, Machine Learning, and Data Visualization.
+          </p>
+
+        </div>
+
+        <div class="about-card glass">
+
+          <h3>Career Goals</h3>
+
+          <p>
+            Passionate about building intelligent systems, analyzing data,
+            and developing impactful digital products. I enjoy combining
+            technical knowledge with communication and collaboration skills
+            to create solutions that are both practical and data-driven.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>Languages, Libraries, and Tools</h2>
+
+        <p>
+          Technologies I use for development and data science
+        </p>
+
+      </div>
+
+      <div class="tools-grid">
+
+        <div class="tool-item glass">
+          <img src="images/Skills/python.png" alt="">
+          <span>Python</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/sql.png" alt="">
+          <span>SQL</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/html.png" alt="">
+          <span>HTML</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/css.png" alt="">
+          <span>CSS</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/java.png" alt="">
+          <span>JavaScript</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/tablo.png" alt="">
+          <span>Tableau</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/postgre.png" alt="">
+          <span>PostgreSQL</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/mongo.png" alt="">
+          <span>MongoDB</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/huggingface.png" alt="">
+          <span>Hugging Face</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/tailwind.png" alt="">
+          <span>Tailwind</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/tensorflow.png" alt="">
+          <span>TensorFlow</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/streamlit.png" alt="">
+          <span>Streamlit</span>
+        </div>
+
+        <div class="tool-item glass">
+          <img src="images/Skills/excel.png" alt="">
+          <span>Excel</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Featured GitHub Projects</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <div class="project-card glass">
+
+          <div class="project-content">
+
+            <h3>Movie Prediction</h3>
+
+            <p>
+              Machine learning project for predicting movie-related
+              outcomes using predictive analytics and data modeling.
+            </p>
+
+            <a href="https://github.com/Skyrezz69/movie-prediction" target="_blank">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="project-card glass">
+
+          <div class="project-content">
+
+            <h3>Rarity Pokemon Prediction</h3>
+
+            <p>
+              Classification model project to predict Pokémon rarity
+              using machine learning algorithms and structured datasets.
+            </p>
+
+            <a href="https://github.com/Skyrezz69/rarity-pokemon-prediction" target="_blank">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="project-card glass">
+
+          <div class="project-content">
+
+            <h3>Smartwatch Prices Data Pipeline</h3>
+
+            <p>
+              ETL and data engineering pipeline project for smartwatch
+              pricing datasets with automated transformation workflows.
+            </p>
+
+            <a href="https://github.com/Skyrezz69/smartwatch-prices-data-pipeline" target="_blank">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="project-card glass">
+
+          <div class="project-content">
+
+            <h3>Rock Paper Scissors Sentiment Analysis</h3>
+
+            <p>
+              NLP sentiment analysis project using machine learning
+              techniques to analyze text-based user opinions.
+            </p>
+
+            <a href="https://github.com/Skyrezz69/rock-paper-scissors-sentiment-analysis" target="_blank">
+              View Project →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>Academic & Professional Learning</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-card glass">
+
+          <h3>Hacktiv8 Indonesia</h3>
+
+          <span>
+            2024 - 2025 | Full Time Data Science Bootcamp
+          </span>
+
+          <p>
+            Studied Data Analysis, Data Visualization, Machine Learning,
+            Data Wrangling, SQL, Big Data Analytics, ETL pipelines,
+            and model deployment using modern data science tools
+            and frameworks.
+          </p>
+
+        </div>
+
+        <div class="timeline-card glass">
+
+          <h3>STAI Nur El-Ghazy</h3>
+
+          <span>
+            2019 - 2024 | Bachelor's Degree in Education
+          </span>
+
+          <p>
+            Developed strong foundations in communication, leadership,
+            teaching, and critical thinking through academic and
+            practical educational experiences.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Let's Connect</p>
+      </div>
+
+      <div class="contact-box glass">
+
+        <h3>Get In Touch</h3>
+
+        <p>📧 syadeworeza1705@gmail.com</p>
+
+        <p>📱 085770765368</p>
+
+        <p>📍 Bekasi, Indonesia</p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 Reza Syadewo. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
